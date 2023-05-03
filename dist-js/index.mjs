@@ -17,9 +17,9 @@ import { invoke, transformCallback } from '@tauri-apps/api/tauri';
  * @since 1.0.0
  */
 async function register(shortcut, handler) {
-    return await invoke('plugin:globalShortcut|register', {
+    return await invoke("plugin:globalShortcut|register", {
         shortcut,
-        handler: transformCallback(handler)
+        handler: transformCallback(handler),
     });
 }
 /**
@@ -38,9 +38,9 @@ async function register(shortcut, handler) {
  * @since 1.0.0
  */
 async function registerAll(shortcuts, handler) {
-    return await invoke('plugin:globalShortcut|register_all', {
+    return await invoke("plugin:globalShortcut|register_all", {
         shortcuts,
-        handler: transformCallback(handler)
+        handler: transformCallback(handler),
     });
 }
 /**
@@ -59,8 +59,8 @@ async function registerAll(shortcuts, handler) {
  * @since 1.0.0
  */
 async function isRegistered(shortcut) {
-    return await invoke('plugin:globalShortcut|is_registered', {
-        shortcut
+    return await invoke("plugin:globalShortcut|is_registered", {
+        shortcut,
     });
 }
 /**
@@ -76,8 +76,8 @@ async function isRegistered(shortcut) {
  * @since 1.0.0
  */
 async function unregister(shortcut) {
-    return await invoke('plugin:globalShortcut|unregister', {
-        shortcut
+    return await invoke("plugin:globalShortcut|unregister", {
+        shortcut,
     });
 }
 /**
@@ -91,7 +91,7 @@ async function unregister(shortcut) {
  * @since 1.0.0
  */
 async function unregisterAll() {
-    return await invoke('plugin:globalShortcut|unregister_all');
+    return await invoke("plugin:globalShortcut|unregister_all");
 }
 
 export { isRegistered, register, registerAll, unregister, unregisterAll };
