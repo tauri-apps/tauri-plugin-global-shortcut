@@ -3,7 +3,7 @@ export type ShortcutHandler = (shortcut: string) => void;
  * Register a global shortcut.
  * @example
  * ```typescript
- * import { register } from 'tauri-plugin-global-shortcut-api';
+ * import { register } from '@tauri-apps/plugin-global-shortcut';
  * await register('CommandOrControl+Shift+C', () => {
  *   console.log('Shortcut triggered');
  * });
@@ -19,7 +19,7 @@ declare function register(shortcut: string, handler: ShortcutHandler): Promise<v
  * Register a collection of global shortcuts.
  * @example
  * ```typescript
- * import { registerAll } from 'tauri-plugin-global-shortcut-api';
+ * import { registerAll } from '@tauri-apps/plugin-global-shortcut';
  * await registerAll(['CommandOrControl+Shift+C', 'Ctrl+Alt+F12'], (shortcut) => {
  *   console.log(`Shortcut ${shortcut} triggered`);
  * });
@@ -38,7 +38,7 @@ declare function registerAll(shortcuts: string[], handler: ShortcutHandler): Pro
  *
  * @example
  * ```typescript
- * import { isRegistered } from 'tauri-plugin-global-shortcut-api';
+ * import { isRegistered } from '@tauri-apps/plugin-global-shortcut';
  * const isRegistered = await isRegistered('CommandOrControl+P');
  * ```
  *
@@ -51,7 +51,7 @@ declare function isRegistered(shortcut: string): Promise<boolean>;
  * Unregister a global shortcut.
  * @example
  * ```typescript
- * import { unregister } from 'tauri-plugin-global-shortcut-api';
+ * import { unregister } from '@tauri-apps/plugin-global-shortcut';
  * await unregister('CmdOrControl+Space');
  * ```
  *
@@ -64,7 +64,7 @@ declare function unregister(shortcut: string): Promise<void>;
  * Unregisters all shortcuts registered by the application.
  * @example
  * ```typescript
- * import { unregisterAll } from 'tauri-plugin-global-shortcut-api';
+ * import { unregisterAll } from '@tauri-apps/plugin-global-shortcut';
  * await unregisterAll();
  * ```
  *
