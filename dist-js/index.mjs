@@ -1,6 +1,6 @@
-import { invoke, transformCallback } from '@tauri-apps/api/tauri';
-
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: MIT
 /**
  * Register a global shortcut.
  * @example
@@ -17,9 +17,9 @@ import { invoke, transformCallback } from '@tauri-apps/api/tauri';
  * @since 1.0.0
  */
 async function register(shortcut, handler) {
-    return await invoke("plugin:globalShortcut|register", {
+    return await window.__TAURI_INVOKE__("plugin:globalShortcut|register", {
         shortcut,
-        handler: transformCallback(handler),
+        handler: window.__TAURI__.transformCallback(handler),
     });
 }
 /**
@@ -38,9 +38,9 @@ async function register(shortcut, handler) {
  * @since 1.0.0
  */
 async function registerAll(shortcuts, handler) {
-    return await invoke("plugin:globalShortcut|register_all", {
+    return await window.__TAURI_INVOKE__("plugin:globalShortcut|register_all", {
         shortcuts,
-        handler: transformCallback(handler),
+        handler: window.__TAURI__.transformCallback(handler),
     });
 }
 /**
@@ -59,7 +59,7 @@ async function registerAll(shortcuts, handler) {
  * @since 1.0.0
  */
 async function isRegistered(shortcut) {
-    return await invoke("plugin:globalShortcut|is_registered", {
+    return await window.__TAURI_INVOKE__("plugin:globalShortcut|is_registered", {
         shortcut,
     });
 }
@@ -76,7 +76,7 @@ async function isRegistered(shortcut) {
  * @since 1.0.0
  */
 async function unregister(shortcut) {
-    return await invoke("plugin:globalShortcut|unregister", {
+    return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister", {
         shortcut,
     });
 }
@@ -91,7 +91,7 @@ async function unregister(shortcut) {
  * @since 1.0.0
  */
 async function unregisterAll() {
-    return await invoke("plugin:globalShortcut|unregister_all");
+    return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister_all");
 }
 
 export { isRegistered, register, registerAll, unregister, unregisterAll };
