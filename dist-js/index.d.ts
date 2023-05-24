@@ -25,7 +25,7 @@ export type ShortcutHandler = (shortcut: string) => void;
  * @param shortcut Shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function register(shortcut: string, handler: ShortcutHandler): Promise<void>;
 /**
@@ -41,7 +41,7 @@ declare function register(shortcut: string, handler: ShortcutHandler): Promise<v
  * @param shortcuts Array of shortcut definitions, modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function registerAll(shortcuts: string[], handler: ShortcutHandler): Promise<void>;
 /**
@@ -57,7 +57,7 @@ declare function registerAll(shortcuts: string[], handler: ShortcutHandler): Pro
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function isRegistered(shortcut: string): Promise<boolean>;
 /**
@@ -70,7 +70,7 @@ declare function isRegistered(shortcut: string): Promise<boolean>;
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function unregister(shortcut: string): Promise<void>;
 /**
@@ -81,7 +81,7 @@ declare function unregister(shortcut: string): Promise<void>;
  * await unregisterAll();
  * ```
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function unregisterAll(): Promise<void>;
 export { register, registerAll, isRegistered, unregister, unregisterAll };

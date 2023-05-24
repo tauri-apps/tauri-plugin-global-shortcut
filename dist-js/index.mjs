@@ -14,7 +14,7 @@
  * @param shortcut Shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function register(shortcut, handler) {
     return await window.__TAURI_INVOKE__("plugin:globalShortcut|register", {
@@ -35,7 +35,7 @@ async function register(shortcut, handler) {
  * @param shortcuts Array of shortcut definitions, modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function registerAll(shortcuts, handler) {
     return await window.__TAURI_INVOKE__("plugin:globalShortcut|register_all", {
@@ -56,7 +56,7 @@ async function registerAll(shortcuts, handler) {
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function isRegistered(shortcut) {
     return await window.__TAURI_INVOKE__("plugin:globalShortcut|is_registered", {
@@ -73,7 +73,7 @@ async function isRegistered(shortcut) {
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function unregister(shortcut) {
     return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister", {
@@ -88,7 +88,7 @@ async function unregister(shortcut) {
  * await unregisterAll();
  * ```
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function unregisterAll() {
     return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister_all");
