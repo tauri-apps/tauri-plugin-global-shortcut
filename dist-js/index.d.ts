@@ -1,16 +1,3 @@
-/**
- * Register global shortcuts.
- *
- * @module
- */
-declare global {
-    interface Window {
-        __TAURI_INVOKE__: <T>(cmd: string, args?: unknown) => Promise<T>;
-        __TAURI__: {
-            transformCallback: <T>(cb: (payload: T) => void) => number;
-        };
-    }
-}
 export type ShortcutHandler = (shortcut: string) => void;
 /**
  * Register a global shortcut.

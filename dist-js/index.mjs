@@ -1,6 +1,13 @@
+import { Channel, invoke } from '@tauri-apps/api/tauri';
+
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-License-Identifier: MIT
+/**
+ * Register global shortcuts.
+ *
+ * @module
+ */
 /**
  * Register a global shortcut.
  * @example
@@ -17,9 +24,11 @@
  * @since 2.0.0
  */
 async function register(shortcut, handler) {
-    return await window.__TAURI_INVOKE__("plugin:globalShortcut|register", {
+    const h = new Channel();
+    h.onmessage = handler;
+    return await invoke("plugin:globalShortcut|register", {
         shortcut,
-        handler: window.__TAURI__.transformCallback(handler),
+        handler: h,
     });
 }
 /**
@@ -38,9 +47,11 @@ async function register(shortcut, handler) {
  * @since 2.0.0
  */
 async function registerAll(shortcuts, handler) {
-    return await window.__TAURI_INVOKE__("plugin:globalShortcut|register_all", {
+    const h = new Channel();
+    h.onmessage = handler;
+    return await invoke("plugin:globalShortcut|register_all", {
         shortcuts,
-        handler: window.__TAURI__.transformCallback(handler),
+        handler: h,
     });
 }
 /**
@@ -59,7 +70,7 @@ async function registerAll(shortcuts, handler) {
  * @since 2.0.0
  */
 async function isRegistered(shortcut) {
-    return await window.__TAURI_INVOKE__("plugin:globalShortcut|is_registered", {
+    return await invoke("plugin:globalShortcut|is_registered", {
         shortcut,
     });
 }
@@ -76,7 +87,7 @@ async function isRegistered(shortcut) {
  * @since 2.0.0
  */
 async function unregister(shortcut) {
-    return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister", {
+    return await invoke("plugin:globalShortcut|unregister", {
         shortcut,
     });
 }
@@ -91,7 +102,7 @@ async function unregister(shortcut) {
  * @since 2.0.0
  */
 async function unregisterAll() {
-    return await window.__TAURI_INVOKE__("plugin:globalShortcut|unregister_all");
+    return await invoke("plugin:globalShortcut|unregister_all");
 }
 
 export { isRegistered, register, registerAll, unregister, unregisterAll };
