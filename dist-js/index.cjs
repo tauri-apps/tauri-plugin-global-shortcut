@@ -1,4 +1,6 @@
-import { Channel, invoke } from '@tauri-apps/api/primitives';
+'use strict';
+
+var primitives = require('@tauri-apps/api/primitives');
 
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
 // SPDX-License-Identifier: Apache-2.0
@@ -24,9 +26,9 @@ import { Channel, invoke } from '@tauri-apps/api/primitives';
  * @since 2.0.0
  */
 async function register(shortcut, handler) {
-    const h = new Channel();
+    const h = new primitives.Channel();
     h.onmessage = handler;
-    return await invoke("plugin:globalShortcut|register", {
+    return await primitives.invoke("plugin:globalShortcut|register", {
         shortcut,
         handler: h,
     });
@@ -47,9 +49,9 @@ async function register(shortcut, handler) {
  * @since 2.0.0
  */
 async function registerAll(shortcuts, handler) {
-    const h = new Channel();
+    const h = new primitives.Channel();
     h.onmessage = handler;
-    return await invoke("plugin:globalShortcut|register_all", {
+    return await primitives.invoke("plugin:globalShortcut|register_all", {
         shortcuts,
         handler: h,
     });
@@ -70,7 +72,7 @@ async function registerAll(shortcuts, handler) {
  * @since 2.0.0
  */
 async function isRegistered(shortcut) {
-    return await invoke("plugin:globalShortcut|is_registered", {
+    return await primitives.invoke("plugin:globalShortcut|is_registered", {
         shortcut,
     });
 }
@@ -87,7 +89,7 @@ async function isRegistered(shortcut) {
  * @since 2.0.0
  */
 async function unregister(shortcut) {
-    return await invoke("plugin:globalShortcut|unregister", {
+    return await primitives.invoke("plugin:globalShortcut|unregister", {
         shortcut,
     });
 }
@@ -102,8 +104,11 @@ async function unregister(shortcut) {
  * @since 2.0.0
  */
 async function unregisterAll() {
-    return await invoke("plugin:globalShortcut|unregister_all");
+    return await primitives.invoke("plugin:globalShortcut|unregister_all");
 }
 
-export { isRegistered, register, registerAll, unregister, unregisterAll };
-//# sourceMappingURL=index.mjs.map
+exports.isRegistered = isRegistered;
+exports.register = register;
+exports.registerAll = registerAll;
+exports.unregister = unregister;
+exports.unregisterAll = unregisterAll;
