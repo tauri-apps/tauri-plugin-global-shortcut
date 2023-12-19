@@ -1,6 +1,6 @@
 'use strict';
 
-var primitives = require('@tauri-apps/api/primitives');
+var core = require('@tauri-apps/api/core');
 
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
 // SPDX-License-Identifier: Apache-2.0
@@ -26,9 +26,9 @@ var primitives = require('@tauri-apps/api/primitives');
  * @since 2.0.0
  */
 async function register(shortcut, handler) {
-    const h = new primitives.Channel();
+    const h = new core.Channel();
     h.onmessage = handler;
-    return await primitives.invoke("plugin:globalShortcut|register", {
+    return await core.invoke("plugin:globalShortcut|register", {
         shortcut,
         handler: h,
     });
@@ -49,9 +49,9 @@ async function register(shortcut, handler) {
  * @since 2.0.0
  */
 async function registerAll(shortcuts, handler) {
-    const h = new primitives.Channel();
+    const h = new core.Channel();
     h.onmessage = handler;
-    return await primitives.invoke("plugin:globalShortcut|register_all", {
+    return await core.invoke("plugin:globalShortcut|register_all", {
         shortcuts,
         handler: h,
     });
@@ -72,7 +72,7 @@ async function registerAll(shortcuts, handler) {
  * @since 2.0.0
  */
 async function isRegistered(shortcut) {
-    return await primitives.invoke("plugin:globalShortcut|is_registered", {
+    return await core.invoke("plugin:globalShortcut|is_registered", {
         shortcut,
     });
 }
@@ -89,7 +89,7 @@ async function isRegistered(shortcut) {
  * @since 2.0.0
  */
 async function unregister(shortcut) {
-    return await primitives.invoke("plugin:globalShortcut|unregister", {
+    return await core.invoke("plugin:globalShortcut|unregister", {
         shortcut,
     });
 }
@@ -104,7 +104,7 @@ async function unregister(shortcut) {
  * @since 2.0.0
  */
 async function unregisterAll() {
-    return await primitives.invoke("plugin:globalShortcut|unregister_all");
+    return await core.invoke("plugin:globalShortcut|unregister_all");
 }
 
 exports.isRegistered = isRegistered;
