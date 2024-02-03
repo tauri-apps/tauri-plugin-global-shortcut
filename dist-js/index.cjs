@@ -28,7 +28,7 @@ var core = require('@tauri-apps/api/core');
 async function register(shortcut, handler) {
     const h = new core.Channel();
     h.onmessage = handler;
-    return await core.invoke("plugin:globalShortcut|register", {
+    return await core.invoke("plugin:global-shortcut|register", {
         shortcut,
         handler: h,
     });
@@ -51,7 +51,7 @@ async function register(shortcut, handler) {
 async function registerAll(shortcuts, handler) {
     const h = new core.Channel();
     h.onmessage = handler;
-    return await core.invoke("plugin:globalShortcut|register_all", {
+    return await core.invoke("plugin:global-shortcut|register_all", {
         shortcuts,
         handler: h,
     });
@@ -72,7 +72,7 @@ async function registerAll(shortcuts, handler) {
  * @since 2.0.0
  */
 async function isRegistered(shortcut) {
-    return await core.invoke("plugin:globalShortcut|is_registered", {
+    return await core.invoke("plugin:global-shortcut|is_registered", {
         shortcut,
     });
 }
@@ -89,7 +89,7 @@ async function isRegistered(shortcut) {
  * @since 2.0.0
  */
 async function unregister(shortcut) {
-    return await core.invoke("plugin:globalShortcut|unregister", {
+    return await core.invoke("plugin:global-shortcut|unregister", {
         shortcut,
     });
 }
@@ -104,7 +104,7 @@ async function unregister(shortcut) {
  * @since 2.0.0
  */
 async function unregisterAll() {
-    return await core.invoke("plugin:globalShortcut|unregister_all");
+    return await core.invoke("plugin:global-shortcut|unregister_all");
 }
 
 exports.isRegistered = isRegistered;
