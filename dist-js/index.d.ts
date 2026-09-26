@@ -1,8 +1,15 @@
+/**
+ * Payload sent to a shortcut handler when a registered shortcut is pressed or released.
+ */
 export interface ShortcutEvent {
+    /** The shortcut definition that triggered this event, e.g. `CommandOrControl+Shift+C`. */
     shortcut: string;
+    /** Numeric identifier derived from the shortcut's modifiers and key. */
     id: number;
+    /** Whether the shortcut's key combination was pressed down or released. */
     state: 'Released' | 'Pressed';
 }
+/** Callback invoked with a {@link ShortcutEvent} whenever a registered shortcut changes state. */
 export type ShortcutHandler = (event: ShortcutEvent) => void;
 /**
  * Register a global shortcut or a list of shortcuts.
@@ -29,7 +36,7 @@ export type ShortcutHandler = (event: ShortcutEvent) => void;
  * });
  * ```
  *
- * @param shortcut Shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
+ * @param shortcuts A shortcut definition, or a list of shortcut definitions, with modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
  * @since 2.0.0
@@ -49,7 +56,7 @@ declare function register(shortcuts: string | string[], handler: ShortcutHandler
  * await unregister(['CmdOrControl+Space', 'Alt+A']);
  * ```
  *
- * @param shortcut shortcut definition (modifiers and key separated by "+" e.g. CmdOrControl+Q), also accepts a list of shortcuts
+ * @param shortcuts A shortcut definition, or a list of shortcut definitions, with modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
  * @since 2.0.0
  */
@@ -77,6 +84,7 @@ declare function unregisterAll(): Promise<void>;
  * ```
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
+ * @returns A promise resolving to whether the shortcut is currently registered by this application.
  *
  * @since 2.0.0
  */

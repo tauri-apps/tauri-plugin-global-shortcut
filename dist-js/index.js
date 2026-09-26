@@ -33,7 +33,7 @@ import { Channel, invoke } from '@tauri-apps/api/core';
  * });
  * ```
  *
- * @param shortcut Shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
+ * @param shortcuts A shortcut definition, or a list of shortcut definitions, with modifiers and key separated by "+" e.g. CmdOrControl+Q
  * @param handler Shortcut handler callback - takes the triggered shortcut as argument
  *
  * @since 2.0.0
@@ -60,7 +60,7 @@ async function register(shortcuts, handler) {
  * await unregister(['CmdOrControl+Space', 'Alt+A']);
  * ```
  *
- * @param shortcut shortcut definition (modifiers and key separated by "+" e.g. CmdOrControl+Q), also accepts a list of shortcuts
+ * @param shortcuts A shortcut definition, or a list of shortcut definitions, with modifiers and key separated by "+" e.g. CmdOrControl+Q
  *
  * @since 2.0.0
  */
@@ -94,6 +94,7 @@ async function unregisterAll() {
  * ```
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
+ * @returns A promise resolving to whether the shortcut is currently registered by this application.
  *
  * @since 2.0.0
  */
