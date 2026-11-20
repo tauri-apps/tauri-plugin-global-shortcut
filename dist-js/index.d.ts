@@ -80,7 +80,7 @@ declare function unregisterAll(): Promise<void>;
  * @example
  * ```typescript
  * import { isRegistered } from '@tauri-apps/plugin-global-shortcut';
- * const isRegistered = await isRegistered('CommandOrControl+P');
+ * const registered = await isRegistered('CommandOrControl+P');
  * ```
  *
  * @param shortcut shortcut definition, modifiers and key separated by "+" e.g. CmdOrControl+Q
